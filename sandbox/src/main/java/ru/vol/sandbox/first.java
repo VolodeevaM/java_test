@@ -1,7 +1,9 @@
+package ru.vol.sandbox;
+
 public class first {
 
  public static void main(String [] args) {
-   System.out.println("HHHHH");
+   System.out.println("hello");
   }
 
 }
