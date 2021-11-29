@@ -10,7 +10,7 @@ public class first {
 
         Point p1 = new Point(1, 3, 1, 3);
 
-        System.out.println("Расстояние" + distance (p1));
+        System.out.println("Расстояние между двумя точками "+ "= "+  distance (p1));
     }
 
     public static double area(Square s) {
