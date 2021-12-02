@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.vol.addressbook.GroupCreationTests" tests="3" skipped="1" failures="2" errors="0" timestamp="2021-12-01T15:11:05" hostname="SPBPC046" time="0.151">
+<testsuite name="ru.vol.addressbook.GroupCreationTests" tests="3" skipped="1" failures="2" errors="0" timestamp="2021-12-01T15:20:49" hostname="SPBPC046" time="0.131">
   <properties/>
-  <testcase name="setUp" classname="ru.vol.addressbook.GroupCreationTests" time="0.09">
+  <testcase name="setUp" classname="ru.vol.addressbook.GroupCreationTests" time="0.077">
     <failure message="java.lang.IllegalStateException: The path to the driver executable The path to the driver executable must be set by the webdriver.gecko.driver system property; for more information, see https://github.com/mozilla/geckodriver. The latest version can be downloaded from https://github.com/mozilla/geckodriver/releases" type="java.lang.IllegalStateException">java.lang.IllegalStateException: The path to the driver executable The path to the driver executable must be set by the webdriver.gecko.driver system property; for more information, see https://github.com/mozilla/geckodriver. The latest version can be downloaded from https://github.com/mozilla/geckodriver/releases
 	at org.openqa.selenium.internal.Require$StateChecker.nonNull(Require.java:280)
 	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:132)
