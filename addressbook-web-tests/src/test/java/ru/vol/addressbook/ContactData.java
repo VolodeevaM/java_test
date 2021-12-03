@@ -1,4 +1,4 @@
-package ru.vol.addressbook.model;
+package ru.vol.addressbook;
 
 public class ContactData {
     private final String firsttName;

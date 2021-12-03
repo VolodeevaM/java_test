@@ -1,22 +1,25 @@
-package ru.vol.addressbook.appmanager;
+package ru.vol.addressbook;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.vol.addressbook.model.GroupData;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
-public class ApplicationManager {
+public class TestBase {
     public WebDriver wd;
 
-    public void init() {
+    @BeforeMethod(alwaysRun = true)
+    public void setUp() throws Exception {
         wd = new FirefoxDriver();
         wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         wd.get("http://localhost:8443/addressbook/group.php");
         Login("admin", "secret");
+
     }
 
     private void Login(String username, String password) {
@@ -30,19 +33,19 @@ public class ApplicationManager {
         wd.findElement(By.xpath("//input[@value='Login']")).click();
     }
 
-    public void returnToGroupPage() {
+    protected void returnToGroupPage() {
         wd.findElement(By.linkText("group page")).click();
     }
 
-    public void initGroupCreation() {
+    protected void initGroupCreation() {
         wd.findElement(By.name("new")).click();
     }
 
-    public void submitGroupCreation() {
+    protected void submitGroupCreation() {
         wd.findElement(By.name("submit")).click();
     }
 
-    public void fillGroupForm(GroupData groupData) {
+    protected void fillGroupForm(GroupData groupData) {
         wd.findElement(By.name("group_name")).click();
         wd.findElement(By.name("group_name")).clear();
         wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
@@ -55,8 +58,10 @@ public class ApplicationManager {
         wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
     }
 
-    public void stop() {
+    @AfterMethod(alwaysRun = true)
+    public void tearDown() throws Exception {
         wd.quit();
+
     }
 
     private boolean isElementPresent(By by) {
@@ -77,11 +82,11 @@ public class ApplicationManager {
         }
     }
 
-    public void deleteGroup() {
+    protected void deleteGroup() {
       wd.findElement(By.name("delete")).click();
     }
 
-    public void selectGroup() {
+    protected void selectGroup() {
       wd.findElement(By.name("selected[]")).click();
     }
 }
