@@ -1,4 +1,4 @@
-package ru.vol.addressbook;
+package ru.vol.addressbook.model;
 
 public class GroupData {
     private final String name;

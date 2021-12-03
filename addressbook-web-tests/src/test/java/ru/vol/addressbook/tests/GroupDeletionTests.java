@@ -1,4 +1,4 @@
-package ru.vol.addressbook;
+package ru.vol.addressbook.tests;
 
 import org.testng.annotations.Test;
 
@@ -7,10 +7,9 @@ public class GroupDeletionTests extends TestBase {
 
   @Test
   public void testGroupDeletion() throws Exception {
-    wd.get("http://localhost:8443/addressbook/group.php");
-    SelectGroup();
-    DeleteSelectedGroup();
-    returnToGroupPage();
+    app.SelectGroup();
+    app.DeleteSelectedGroup();
+    app.returnToGroupPage();
   }
 
 
