@@ -1,7 +1,6 @@
 package ru.vol.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -19,7 +18,7 @@ public class ApplicationManager {
     public void init() {
         wd = new FirefoxDriver();
         wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        wd.get("http://localhost:8443/addressbook/group.php");
+        wd.get("http://localhost:8443/addressbook/index.php");
         groupHelper = new GroupHelper(wd);
         contactHelper = new ContactHelper(wd);
         sessionHelper = new SessionHelper(wd);
