@@ -12,7 +12,7 @@ public class ContactHelper extends HelperBase{
     }
 
     public void returnToContactPage() {
-        click(By.linkText("home page"));
+        click(By.linkText("home"));
     }
 
     public void input() {
@@ -49,5 +49,13 @@ public class ContactHelper extends HelperBase{
 
     public void submitContactModification() {
         click(By.name("update"));
+    }
+
+    public void iniContactDeletion() {
+        click(By.xpath("//input[@value='Delete']"));
+    }
+
+    public void ContactDeletion() {
+        wd.switchTo().alert().accept();
     }
 }
