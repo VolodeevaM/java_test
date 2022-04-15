@@ -1,44 +1,41 @@
 package ru.vol.sandbox;
 
+import java.util.Objects;
 
-
-import static java.lang.Math.sqrt;
-
-class Point {
+public class Point {
     private double x;
     private double y;
 
-    public Point(final double x, final double y) {
+    public Point(double x, double y) {
         this.x = x;
         this.y = y;
-    }
 
+    }
 
     public double getX() {
         return x;
-    }
-
-    public void setX(float x) {
-        this.x = x;
     }
 
     public double getY() {
         return y;
     }
 
-    public void setY(float y) {
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
         this.y = y;
     }
 
-    @Override
-    public String toString() {
-
-        return this.x + ";" + this.y;
-
+    public double getDistance(Point p) {
+        if (Objects.isNull(p)) {
+            throw new IllegalArgumentException("Пустое значение");
+        }
+        return Math.sqrt(Math.pow((this.x - p.x), 2) + Math.pow((this.y - p.y), 2));
     }
 
-    public double distance(Point p) {
-        return sqrt((p.x - this.x) * (p.x - this.x) + (p.y - this.y) * (p.y - this.y));
-
+    public String toString() {
+        return "(" + this.x + ", " + this.y + ")";
     }
 }
