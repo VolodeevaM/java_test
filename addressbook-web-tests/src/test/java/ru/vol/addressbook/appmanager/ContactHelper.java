@@ -9,10 +9,6 @@ import ru.vol.addressbook.model.ContactData;
 public class ContactHelper extends HelperBase{
 
 
-    public int getContactCount() {
-        return wd.findElements(By.name("selected[]")).size();
-    }
-
     public ContactHelper(WebDriver wd) {
         super(wd);
     }
@@ -77,6 +73,9 @@ public class ContactHelper extends HelperBase{
         fillContactForm(new ContactData("test1", "lastName", "1", "i", "1", "1", "2", "3", "test1"), true);
         input();
         returnToContactPage();
+    }
+    public int getContactCount() {
+        return wd.findElements(By.name("selected[]")).size();
     }
 
     public boolean isThereaContact() {
