@@ -9,9 +9,14 @@ import ru.vol.addressbook.model.ContactData;
 public class ContactHelper extends HelperBase{
 
 
+    public int getContactCount() {
+        return wd.findElements(By.name("selected[]")).size();
+    }
+
     public ContactHelper(WebDriver wd) {
         super(wd);
     }
+
 
     public void returnToContactPage() {
         click(By.linkText("home"));
