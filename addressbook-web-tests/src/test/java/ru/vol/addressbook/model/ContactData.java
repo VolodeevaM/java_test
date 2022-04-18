@@ -23,16 +23,16 @@ public class ContactData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
-        return id == that.id && Objects.equals(firsttName, that.firsttName) && Objects.equals(lastName, that.lastName);
+        return Objects.equals(firsttName, that.firsttName) && Objects.equals(lastName, that.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firsttName, lastName);
+        return Objects.hash(firsttName, lastName);
     }
 
     public ContactData(String firsttName, String lastName, String middleName, String nickName, String title, String company, String address, String notes, String group) {
-        this.id = 0;
+        this.id = Integer.MAX_VALUE;
         this.firsttName = firsttName;
         this.lastName = lastName;
         this.middleName = middleName;
