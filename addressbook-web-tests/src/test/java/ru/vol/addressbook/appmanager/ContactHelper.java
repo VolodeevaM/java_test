@@ -3,8 +3,12 @@ package ru.vol.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import ru.vol.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends HelperBase{
 
@@ -38,7 +42,9 @@ public class ContactHelper extends HelperBase{
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
 
+
     }
+
 
     public void initContactCreation() {
         click(By.linkText("add new"));
@@ -52,8 +58,8 @@ public class ContactHelper extends HelperBase{
         click(By.name("home page"));
     }
 
-    public void SelectContact() {
-        click(By.name("selected[]"));
+    public void selectContact(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
     }
 
     public void submitContactModification() {
@@ -70,15 +76,42 @@ public class ContactHelper extends HelperBase{
 
     public void createContact(ContactData contact) {
         initContactCreation();
-        fillContactForm(new ContactData("test1", "lastName", "1", "i", "1", "1", "2", "3", "test1"), true);
+        fillContactForm(new ContactData("test1", "lastName", "1",
+                "i", "1", "1", "2", "3", "test1"), true);
         input();
         returnToContactPage();
     }
+
     public int getContactCount() {
         return wd.findElements(By.name("selected[]")).size();
     }
 
     public boolean isThereaContact() {
         return isElementPresent(By.name("selected[]"));
+    }
+
+    public List<ContactData> getContactList() {
+        List<ContactData> contacts = new ArrayList<>();
+        List<WebElement> elements = wd.findElements(By.name("entry"));
+        for (WebElement element : elements) {
+            List<WebElement> cells = element.findElements(By.tagName("td"));
+            int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+            String firstname = element.getText();
+            String lastname = cells.get(1).getText();
+            String middlename = cells.get(2).getText();
+            ContactData contact = new ContactData("test1", "lastName", "1",
+                    "i", "1", "1", "2", "3", "test1");
+            contacts.add(contact);
+        }
+        return contacts;
+    }
+
+    public void deleteSelectedContact() {
+        click(By.xpath("//input[@value='Delete']"));
+        wd.switchTo().alert().accept();
+    }
+
+    public void initContactModification(int index) {
+        wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
     }
 }
