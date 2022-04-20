@@ -11,8 +11,9 @@ import org.openqa.selenium.remote.BrowserType;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-   WebDriver wd;
 
+    WebDriver wd;
+    public NavigationHelper NavigationHelper;
     private SessionHelper sessionHelper;
     private ContactHelper contactHelper;
     private GroupHelper groupHelper;
@@ -38,6 +39,7 @@ public class ApplicationManager {
         groupHelper = new GroupHelper(wd);
         contactHelper = new ContactHelper(wd);
         sessionHelper = new SessionHelper(wd);
+        NavigationHelper = new NavigationHelper(wd);
         sessionHelper.Login("admin", "secret");
     }
 
@@ -55,11 +57,18 @@ public class ApplicationManager {
         }
     }
 
-    public GroupHelper getGroupHelper() {
+    public GroupHelper group() {
         return groupHelper;
     }
 
-    public ContactHelper getContactHelper() {
+    public ContactHelper contact() {
         return contactHelper;
+    }
+
+    public NavigationHelper goTo() {
+        return NavigationHelper;
+    }
+    public void gotoContactPage() {
+        NavigationHelper.contactPage();
     }
 }
