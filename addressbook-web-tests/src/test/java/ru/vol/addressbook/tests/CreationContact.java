@@ -30,6 +30,15 @@ public class CreationContact extends TestBase{
         before.sort(byId);
         after.sort(byId);
         Assert.assertEquals(before, after);
+        Comparator<? super ContactData> bylastName = (f1, f2) -> String.CASE_INSENSITIVE_ORDER.compare(f1.getLastName(),
+                f2.getLastName());
+        before.sort(bylastName);
+        after.sort(bylastName);
+        Assert.assertEquals(before, after);
+        Comparator<? super ContactData> byfirstname = (l1, l2) -> String.CASE_INSENSITIVE_ORDER.compare(l1.getFirsttName(), l2.getFirsttName());
+        before.sort(byfirstname);
+        after.sort(byfirstname);
+        Assert.assertEquals(before, after);
     }
 
 
