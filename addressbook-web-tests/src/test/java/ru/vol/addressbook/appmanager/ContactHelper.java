@@ -27,6 +27,7 @@ public class ContactHelper extends HelperBase{
     }
 
     public void fillContactForm(ContactData contactData,boolean creation) {
+
         type(By.name("firstname"), contactData.getFirsttName());
         type(By.name("lastname"),contactData.getLastName());
         type(By.name("middlename"), contactData.getMiddleName());
@@ -37,7 +38,7 @@ public class ContactHelper extends HelperBase{
         type(By.name("notes"), contactData.getNotes());
 
         if (creation) {
-            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+            new Select(wd.findElement(By.name("new_group"))).selectByIndex(0);
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
@@ -75,9 +76,10 @@ public class ContactHelper extends HelperBase{
     }
 
     public void createContact(ContactData contact) {
-        initContactCreation();
-        fillContactForm(new ContactData("test1", "lastName", "1",
-                "i", "1", "1", "2", "3", "test1"), true);
+
+            initContactCreation();
+            fillContactForm(contact, true);
+
         input();
         returnToContactPage();
     }
