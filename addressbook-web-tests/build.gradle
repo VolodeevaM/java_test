@@ -11,6 +11,6 @@ test {
  dependencies{
   implementation 'org.testng:testng:7.4.0'
   implementation 'org.seleniumhq.selenium:selenium-java:4.1.0'
-
+     implementation 'io.rest-assured.rest-assured:4.2.0'
  }
  
